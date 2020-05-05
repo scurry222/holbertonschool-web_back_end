@@ -6,13 +6,14 @@
         max_delay(int): maximum value of delay
 '''
 import asyncio
+from typing import List
 
 wait_random = __import__('0-basic_async_syntax').wait_random
 
 
-async def wait_n(n: int, max_delay: int) -> float:
+async def wait_n(n: int, max_delay: int) -> List[float]:
     ''' Return array of delays from async function '''
-    delays = []
+    delays: List[float] = []
     for i in range(n):
         delays += await asyncio.gather(wait_random(max_delay))
     return delays
