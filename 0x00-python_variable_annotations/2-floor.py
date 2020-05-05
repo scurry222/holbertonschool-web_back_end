@@ -5,7 +5,7 @@
 '''
 
 
-def floor(n: float) -> float:
+def floor(n: float) -> int:
     ''' Round float down to nearest whole number '''
     import math
     return math.floor(n)
