@@ -2,6 +2,7 @@
 '''
     Defines function async_generator
 '''
+
 import asyncio
 from typing import Generator
 import random
