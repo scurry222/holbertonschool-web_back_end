@@ -3,8 +3,8 @@
     Defines function async_generator
 '''
 import asyncio
-import random
 from typing import Generator
+import random
 
 
 async def async_generator() -> Generator[float, None, None]:
