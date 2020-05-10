@@ -23,7 +23,7 @@ class FIFOCache(BaseCaching):
     def put(self, key, item):
         """ Add an item in the cache using FIFO
         """
-        if key or item:
+        if key is not None and item is not None:
             self.cache_data[key] = item
             if key not in self.keys:
                 self.keys.append(key)
