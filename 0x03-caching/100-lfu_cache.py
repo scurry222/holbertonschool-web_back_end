@@ -1,12 +1,11 @@
 #!/usr/bin/python3
 """ MRUCache module
 """
-from typing import Union
 
 BaseCaching = __import__('base_caching').BaseCaching
 
 
-class LFUCache(BaseCaching):   # type: ignore
+class LFUCache(BaseCaching):
     """ Class MRUCache
 
         Attributes:
@@ -24,7 +23,7 @@ class LFUCache(BaseCaching):   # type: ignore
         self.keys = []
         self.freq = {}
 
-    def put(self, key: str, item: str) -> None:
+    def put(self, key, item):
         """ Add an item in the cache using MRU
         """
         if key or item:
@@ -44,7 +43,7 @@ class LFUCache(BaseCaching):   # type: ignore
                 self.keys.append(key)
                 self.freq[key] = 0
 
-    def get(self, key: str) -> Union[str, None]:
+    def get(self, key):
         """ Get an item by key Using MRU
         """
         if not key or key not in self.cache_data:
@@ -53,7 +52,7 @@ class LFUCache(BaseCaching):   # type: ignore
         self.freq[key] += 1
         return self.cache_data[key]
 
-    def find_LFU(self) -> Union[str, None]:
+    def find_LFU(self):
         """ Return first occurence of lowest frequency value
         """
         m = min(self.freq.values())

@@ -1,12 +1,10 @@
 #!/usr/bin/python3
 """ MRUCache module
 """
-from typing import Union
-
 BaseCaching = __import__('base_caching').BaseCaching
 
 
-class MRUCache(BaseCaching):   # type: ignore
+class MRUCache(BaseCaching):
     """ Class MRUCache
 
         Attributes:
@@ -23,7 +21,7 @@ class MRUCache(BaseCaching):   # type: ignore
         super().__init__()
         self.keys = []
 
-    def put(self, key: str, item: str) -> None:
+    def put(self, key, item):
         """ Add an item in the cache using MRU
         """
         if key or item:
@@ -37,7 +35,7 @@ class MRUCache(BaseCaching):   # type: ignore
                 del self.cache_data[m]
                 print("DISCARD: {}".format(m))
 
-    def get(self, key: str) -> Union[str, None]:
+    def get(self, key):
         """ Get an item by key Using MRU
         """
         if not key or key not in self.cache_data:

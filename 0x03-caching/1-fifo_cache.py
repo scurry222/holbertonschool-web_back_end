@@ -1,12 +1,10 @@
 #!/usr/bin/python3
 """ FIFOCache module
 """
-from typing import Union
-
 BaseCaching = __import__('base_caching').BaseCaching
 
 
-class FIFOCache(BaseCaching):   # type: ignore
+class FIFOCache(BaseCaching):
     """ Class FIFOCache
 
         Attributes:
@@ -23,7 +21,7 @@ class FIFOCache(BaseCaching):   # type: ignore
         super().__init__()
         self.keys = []
 
-    def put(self, key: str, item: str) -> None:
+    def put(self, key, item):
         """ Add an item in the cache using FIFO
         """
         if key or item:
@@ -35,7 +33,7 @@ class FIFOCache(BaseCaching):   # type: ignore
                 del self.cache_data[f]
                 print("DISCARD: {}".format(f))
 
-    def get(self, key: str) -> Union[str, None]:
+    def get(self, key):
         """ Get an item by key using FIFO
         """
         if not key or key not in self.cache_data:

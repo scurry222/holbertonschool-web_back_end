@@ -1,12 +1,10 @@
 #!/usr/bin/python3
 """ LRUCache module
 """
-from typing import Union
-
 BaseCaching = __import__('base_caching').BaseCaching
 
 
-class LRUCache(BaseCaching):   # type: ignore
+class LRUCache(BaseCaching):
     """ Class LRUCache
 
         Attributes:
@@ -23,7 +21,7 @@ class LRUCache(BaseCaching):   # type: ignore
         super().__init__()
         self.keys = []
 
-    def put(self, key: str, item: str) -> None:
+    def put(self, key, item):
         """ Add an item in the cache using LRU
         """
         if key or item:
@@ -37,7 +35,7 @@ class LRUCache(BaseCaching):   # type: ignore
                 del self.cache_data[l]
                 print("DISCARD: {}".format(l))
 
-    def get(self, key: str) -> Union[str, None]:
+    def get(self, key):
         """ Get an item by key using LRU
         """
         if not key or key not in self.cache_data:
