@@ -11,7 +11,6 @@ class MRUCache(BaseCaching):
             - Inherits from BaseCaching
             - Discard most recently used items first
     """
-    MAX_ITEMS = 4
 
     def __init__(self):
         """ Initialize

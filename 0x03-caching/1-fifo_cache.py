@@ -11,7 +11,6 @@ class FIFOCache(BaseCaching):
             - Inherits from BaseCaching
             - Discard last item in queue first
     """
-    MAX_ITEMS = 4
 
     def __init__(self):
         """ Initialize

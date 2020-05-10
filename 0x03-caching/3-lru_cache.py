@@ -11,7 +11,6 @@ class LRUCache(BaseCaching):
             - Inherits from BaseCaching
             - Discard least recently used items first
     """
-    MAX_ITEMS = 4
 
     def __init__(self):
         """ Initialize
