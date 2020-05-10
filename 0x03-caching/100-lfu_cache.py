@@ -52,10 +52,13 @@ class LFUCache(BaseCaching):
         return self.cache_data[key]
 
     def find_LFU(self):
-        """ Return first occurence of lowest frequency value
+        """ Return the least frequency used item
+            In event of multiple items with same least freq,
+            Return least recently used
         """
         m = min(self.freq.values())
-        for key in self.freq:
-            if self.freq[key] == m:
+        lfu = [key for key in self.freq if self.freq[key] == m]
+
+        for key in self.keys:
+            if key in lfu:
                 return key
-        return None
