@@ -25,7 +25,7 @@ class LFUCache(BaseCaching):
     def put(self, key, item):
         """ Add an item in the cache using MRU
         """
-        if key or item:
+        if key is not None and item is not None:
             if len(self.keys) >= BaseCaching.MAX_ITEMS and\
                  key not in self.keys:
                 m = self.keys.pop(self.keys.index(self.find_LFU()))

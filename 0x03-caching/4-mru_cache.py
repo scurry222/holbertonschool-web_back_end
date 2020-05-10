@@ -23,7 +23,7 @@ class MRUCache(BaseCaching):
     def put(self, key, item):
         """ Add an item in the cache using MRU
         """
-        if key or item:
+        if key is not None and item is not None:
             self.cache_data[key] = item
 
             self.keys.append(self.keys.pop(self.keys.index(key))) \
