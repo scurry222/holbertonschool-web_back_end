@@ -32,7 +32,7 @@ class LFUCache(BaseCaching):
                 m = self.keys.pop(self.keys.index(self.find_LFU()))
                 del self.freq[m]
                 del self.cache_data[m]
-                print("DISCARD: {}".format(m))
+                print("DISCARD: {:s}".format(m))
 
             self.cache_data[key] = item
 

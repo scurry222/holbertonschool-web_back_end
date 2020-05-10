@@ -33,7 +33,7 @@ class LIFOCache(BaseCaching):
             if len(self.keys) > BaseCaching.MAX_ITEMS:
                 f = self.keys.pop(len(self.keys) - 2)
                 del self.cache_data[f]
-                print("DISCARD: {}".format(f))
+                print("DISCARD: {:s}".format(f))
 
     def get(self, key):
         """ Get an item by key using LIFO

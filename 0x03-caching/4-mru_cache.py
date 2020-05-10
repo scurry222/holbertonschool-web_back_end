@@ -33,7 +33,7 @@ class MRUCache(BaseCaching):
             if len(self.keys) > BaseCaching.MAX_ITEMS:
                 m = self.keys.pop(len(self.keys) - 2)
                 del self.cache_data[m]
-                print("DISCARD: {}".format(m))
+                print("DISCARD: {:s}".format(m))
 
     def get(self, key):
         """ Get an item by key Using MRU
