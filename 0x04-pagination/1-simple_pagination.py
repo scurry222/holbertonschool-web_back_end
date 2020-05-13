@@ -17,7 +17,7 @@ class Server:
     def __init__(self):
         self.__dataset = None
 
-    def dataset(self) -> List[List]:
+    def dataset(self):
         """ Cached dataset
         """
         if self.__dataset is None:
@@ -27,7 +27,7 @@ class Server:
             self.__dataset = dataset[1:]
         return self.__dataset
 
-    def get_page(self, page: int = 1, page_size: int = 10) -> List:
+    def get_page(self, page = 1, page_size = 10):
         """ Get current page data """
         assert type(page_size) is int and page_size > 0 and type(page) is int\
             and page > 0
