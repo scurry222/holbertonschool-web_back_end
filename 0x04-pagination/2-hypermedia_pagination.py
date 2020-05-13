@@ -28,6 +28,7 @@ class Server:
         return self.__dataset
 
     def get_page(self, page: int = 1, page_size: int = 10) -> List:
+        """ Get page data """
         assert type(page_size) is int and page_size > 0 and type(page) is int\
             and page > 0
         r = index_range(page, page_size)
@@ -36,8 +37,9 @@ class Server:
             return []
         return self.dataset()[r[0]: r[1]]
 
-    def get_hyper(self, page: int = 1, page_size: int = 10) ->\
-         Dict[str, Union[int, List[list]]]:
+    def get_hyper(self, page: int = 1, page_size: int = 10) ->
+    Dict[str, Union[int, List[list]]]:
+        """ Return dictionary of page information """
         total_pages = math.ceil(len(self.dataset()) / page_size)
         return {
             "page_size": len(self.get_page(page, page_size)),
