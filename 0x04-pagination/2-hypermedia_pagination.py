@@ -37,8 +37,8 @@ class Server:
             return []
         return self.dataset()[r[0]: r[1]]
 
-    def get_hyper(self, page: int = 1, page_size: int = 10) ->
-    Dict[str, Union[int, List[list]]]:
+    def get_hyper(self, page: int = 1, page_size: int = 10) -> \
+            Dict[str, Union[int, List[list]]]:
         """ Return dictionary of page information """
         total_pages = math.ceil(len(self.dataset()) / page_size)
         return {
