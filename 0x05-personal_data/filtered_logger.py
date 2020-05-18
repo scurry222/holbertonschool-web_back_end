@@ -7,8 +7,8 @@ import re
 import logging
 import os
 import csv
-# import mysql.connector
-# from mysql.connector import Error
+import mysql.connector
+from mysql.connector import Error
 
 PII_FIELDS = ("name", "email", "phone", "ssn", "ip")
 
@@ -60,22 +60,22 @@ def filter_datum(fields: List[str], redaction: str, message: str,
                   if m.group(1) in fields else m.group(0), message)
 
 
-# def main():
-#     """ Read and filter data """
-#     connection = get_db()
-#     sql_select_Query = "SELECT * FROM users"
-#     cursor = connection.cursor()
-#     cursor.execute(sql_select_Query)
-#     records = cursor.fetchall()
-#     for row in records:
-#         message = "name={};email={};phone={};ssn={};password={};ip={};\
-#             last_login={};user_agent={};"\
-#             .format(row[0], row[1], row[2], row[3], row[4], row[5],
-#                     row[6], row[7])
-#         log_record = logging.LogRecord(
-#             "my_logger", logging.INFO, None, None, message, None, None)
-#         formatter = RedactingFormatter(PII_FIELDS)
-#         formatter.format(log_record)
+def main():
+    """ Read and filter data """
+    connection = get_db()
+    sql_select_Query = "SELECT * FROM users"
+    cursor = connection.cursor()
+    cursor.execute(sql_select_Query)
+    records = cursor.fetchall()
+    for row in records:
+        message = "name={};email={};phone={};ssn={};password={};ip={};\
+            last_login={};user_agent={};"\
+            .format(row[0], row[1], row[2], row[3], row[4], row[5],
+                    row[6], row[7])
+        log_record = logging.LogRecord(
+            "my_logger", logging.INFO, None, None, message, None, None)
+        formatter = RedactingFormatter(PII_FIELDS)
+        formatter.format(log_record)
 
-# if __name__ == '__main__':
-#     main()
+if __name__ == '__main__':
+    main()
