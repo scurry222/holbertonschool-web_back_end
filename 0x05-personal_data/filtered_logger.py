@@ -30,7 +30,7 @@ class RedactingFormatter(logging.Formatter):
                               self.SEPARATOR))
 
 
-def get_db():
+def get_db() -> mysql.connector.connection.MySqlConnection:
     """ Use mysql connector python module to connect to MySQL database """
     return mysql.connector.connect(
         host=os.environ.get("PERSONAL_DATA_DB_HOST"),
@@ -60,7 +60,7 @@ def filter_datum(fields: List[str], redaction: str, message: str,
                   if m.group(1) in fields else m.group(0), message)
 
 
-def main():
+def main() -> None:
     """ Read and filter data """
     connection = get_db()
     sql_select_Query = "SELECT * FROM users"
@@ -76,6 +76,8 @@ def main():
             "my_logger", logging.INFO, None, None, message, None, None)
         formatter = RedactingFormatter(PII_FIELDS)
         formatter.format(log_record)
+    cursor.close()
+    db.close()
 
 if __name__ == '__main__':
     main()

@@ -6,7 +6,7 @@ import bcrypt
 
 
 def hash_password(password: str) -> bytes:
-    """ hash and salt input password  """
+    """ hash and salt input password """
     if password:
         return bcrypt.hashpw(str.encode(password), bcrypt.gensalt())
 
