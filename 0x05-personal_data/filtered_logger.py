@@ -32,10 +32,10 @@ class RedactingFormatter(logging.Formatter):
 def get_db() -> mysql.connector.connection.MySQLConnection:
     """ Use mysql connector python module to connect to MySQL database """
     return mysql.connector.connect(
-        host=os.environ.get("PERSONAL_DATA_DB_HOST"),
+        host=os.environ.get("PERSONAL_DATA_DB_HOST", "root"),
         database=os.environ.get("PERSONAL_DATA_DB_NAME"),
-        user=os.environ.get("PERSONAL_DATA_DB_USERNAME"),
-        password=os.environ.get("PERSONAL_DATA_DB_PASSWORD"),
+        user=os.environ.get("PERSONAL_DATA_DB_USERNAME", "localhost"),
+        password=os.environ.get("PERSONAL_DATA_DB_PASSWORD", ""),
     )
 
 
