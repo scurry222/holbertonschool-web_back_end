@@ -8,7 +8,6 @@ import logging
 import os
 import csv
 import mysql.connector
-from mysql.connector import Error
 
 PII_FIELDS = ("name", "email", "phone", "ssn", "ip")
 
