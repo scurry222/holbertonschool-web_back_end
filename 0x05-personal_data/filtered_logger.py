@@ -30,7 +30,7 @@ class RedactingFormatter(logging.Formatter):
                               self.SEPARATOR))
 
 
-def get_db() -> mysql.connector.connection.MySqlConnection:
+def get_db() -> mysql.connector.connection.MySQLConnection:
     """ Use mysql connector python module to connect to MySQL database """
     return mysql.connector.connect(
         host=os.environ.get("PERSONAL_DATA_DB_HOST"),
