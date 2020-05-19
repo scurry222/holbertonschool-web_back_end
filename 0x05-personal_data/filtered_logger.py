@@ -18,6 +18,7 @@ class RedactingFormatter(logging.Formatter):
     SEPARATOR = ";"
 
     def __init__(self, fields: List[str]):
+        """ initalization """
         super(RedactingFormatter, self).__init__(self.FORMAT)
         self.fields = fields
 
@@ -32,10 +33,10 @@ class RedactingFormatter(logging.Formatter):
 def get_db() -> mysql.connector.connection.MySQLConnection:
     """ Use mysql connector python module to connect to MySQL database """
     return mysql.connector.connect(
-        host=os.environ.get("PERSONAL_DATA_DB_HOST", "root"),
-        database=os.environ.get("PERSONAL_DATA_DB_NAME"),
-        user=os.environ.get("PERSONAL_DATA_DB_USERNAME", "localhost"),
-        password=os.environ.get("PERSONAL_DATA_DB_PASSWORD", ""),
+        host=os.getenv("PERSONAL_DATA_DB_HOST", "root"),
+        database=os.getenv("PERSONAL_DATA_DB_NAME"),
+        user=os.getenv("PERSONAL_DATA_DB_USERNAME", "localhost"),
+        password=os.getenv("PERSONAL_DATA_DB_PASSWORD", ""),
     )
 
 
