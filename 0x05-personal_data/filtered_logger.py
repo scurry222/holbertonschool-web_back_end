@@ -13,6 +13,7 @@ PII_FIELDS = ("name", "email", "phone", "ssn", "ip")
 
 
 class RedactingFormatter(logging.Formatter):
+    """ Format and initialize log class """
     REDACTION = "***"
     FORMAT = "[HOLBERTON] %(name)s %(levelname)s %(asctime)-15s: %(message)s"
     SEPARATOR = ";"
