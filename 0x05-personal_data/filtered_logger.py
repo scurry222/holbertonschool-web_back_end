@@ -56,8 +56,8 @@ def get_logger() -> logging.Logger:
 def filter_datum(fields: List[str], redaction: str, message: str,
                  separator: str) -> str:
     """ Redact occurrences of PII values using one regex piece and call """
-    return re.sub(r"(\w+)=([\w\-./]+@*[\w\-./]+)",
-                  lambda m: m.group(1) + "=" + redaction + separator
+    return re.sub(r"(\w+)=([a-zA-Z0-9@\.\-\(\)\ \:\^\<\>\~\$\%\@\?\!\/]*)",
+                  lambda m: m.group(1) + "=" + redaction
                   if m.group(1) in fields else m.group(0), message)
 
 
