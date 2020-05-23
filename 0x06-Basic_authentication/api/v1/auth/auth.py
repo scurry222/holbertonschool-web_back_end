@@ -20,7 +20,7 @@ class Auth():
     """
     def require_auth(self, path: str, excluded_paths: List[str]) -> bool:
         """ Return requested path if not in the list of excluded paths. """
-        if path is None or excluded_paths is None or not excluded_paths:
+        if path is None or excluded_paths is None:
             return True
         if path[-1] is not "/":
             path += "/"
