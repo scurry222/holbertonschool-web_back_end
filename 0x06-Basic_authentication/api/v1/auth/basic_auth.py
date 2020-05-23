@@ -41,10 +41,10 @@ class BasicAuth(Auth):
             return None
         try:
             header = b64_auth_header.encode('utf-8')
-            header = b64decode(h)
-            header = h.decode('utf-8')
+            header = b64decode(header)
+            header = header.decode('utf-8')
             return header
-        except binascii.Error:
+        except BaseException:
             return None
 
     def extract_user_credentials(self, base64_auth_header: str) -> (str, str):
@@ -52,7 +52,7 @@ class BasicAuth(Auth):
         if base64_auth_header is None or type(base64_auth_header) is not str \
                 or ':' not in base64_auth_header:
             return (None, None)
-        return tuple(base64_auth_header.split(':'))
+        return tuple(base64_auth_header.split(':', 1))
 
     def user_object_from_credentials(self, u_email: str, u_pwd: str) ->\
             TypeVar('User'):
@@ -74,14 +74,11 @@ class BasicAuth(Auth):
         auth_header = self.authorization_header(request)
         if not auth_header:
             return None
-        try:
-            auth_header = self.extract_base64_authorization_header(auth_header)
-            auth_header = self.decode_base64_authorization_header(auth_header)
-        except UnicodeDecodeError:
-            return None
+        auth_header = self.extract_base64_authorization_header(auth_header)
+        auth_header = self.decode_base64_authorization_header(auth_header)
         if not auth_header:
             return None
-
+        print(auth_header)
         user = self.extract_user_credentials(auth_header)
 
         return self.user_object_from_credentials(user[0], user[1])
