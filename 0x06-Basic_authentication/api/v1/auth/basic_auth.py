@@ -54,17 +54,17 @@ class BasicAuth(Auth):
             return (None, None)
         return tuple(base64_auth_header.split(':', 1))
 
-    def user_object_from_credentials(self, u_email: str, u_pwd: str) ->\
+    def user_object_from_credentials(self, user_email: str, user_pwd: str) ->\
             TypeVar('User'):
         """ Find and return matching user in list of users. """
-        if u_email is None or u_pwd is None or \
-                type(u_email) is not str or type(u_pwd) is not str:
+        if user_email is None or user_pwd is None or \
+                type(user_email) is not str or type(user_pwd) is not str:
             return None
 
-        search = User.search({'email': u_email})
+        search = User.search({'email': user_email})
 
         for user in search:
-            if user.is_valid_password(u_pwd):
+            if user.is_valid_password(user_pwd):
                 return user
 
         return None
