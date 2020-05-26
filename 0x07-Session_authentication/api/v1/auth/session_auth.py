@@ -25,7 +25,7 @@ class SessionAuth(Auth):
     """
     user_id_by_session_id = {}
 
-    def create_session(self, user_id: str=None) -> str:
+    def create_session(self, user_id: str = None) -> str:
         """ Use uuid to generate new key in dict, add user_id to key """
         if user_id is None or type(user_id) is not str:
             return None
@@ -33,7 +33,7 @@ class SessionAuth(Auth):
         self.user_id_by_session_id[session_id] = user_id
         return session_id
 
-    def user_id_for_session_id(self, session_id: str=None) -> str:
+    def user_id_for_session_id(self, session_id: str = None) -> str:
         """ Retrieve link between User ID and a session ID """
         if session_id is None or type(session_id) is not str:
             return None

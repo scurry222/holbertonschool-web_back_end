@@ -38,8 +38,8 @@ def login():
     return jsonify({"error": "no user found for this email"}), 404
 
 
-@app_views.route('/auth_session/logout', methods=['DELETE'],\
-     strict_slashes=False)
+@app_views.route('/auth_session/logout', methods=['DELETE'],
+                 strict_slashes=False)
 def delete():
     """ remove a session """
     from api.v1.app import auth
