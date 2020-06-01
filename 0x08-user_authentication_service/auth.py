@@ -13,6 +13,7 @@ def _hash_password(password: str) -> str:
     """ Return a salted hash of the input password """
     return bcrypt.hashpw(password.encode('utf-8'), bcrypt.gensalt())
 
+
 class Auth:
     """ Auth class
         Create and handle the authentication database.
@@ -22,6 +23,7 @@ class Auth:
     """
 
     def __init__(self):
+        """ Initialize database """
         self._db = DB()
 
     def register_user(self, email: str, password: str) -> TypeVar('User'):
