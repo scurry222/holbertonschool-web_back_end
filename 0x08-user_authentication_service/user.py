@@ -19,3 +19,4 @@ class User(Base):
     email = Column(String(250))
     hashed_password = Column(String(250))
     session_id = Column(String(250))
+    reset_token = Column(String(250))
