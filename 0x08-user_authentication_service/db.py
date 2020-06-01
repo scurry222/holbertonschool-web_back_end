@@ -48,7 +48,7 @@ class DB:
 
     def find_user_by(self, **kwargs: dict) -> TypeVar('User'):
         """ Query users table as filtered by the input arguments """
-        return self._session.query(User).filter_by(**kwargs).first()
+        return self._session.query(User).filter_by(**kwargs).one()
 
     def update_user(self, user_id: int, **kwargs: dict) -> None:
         """ Locate user and update info at keyword argument """
