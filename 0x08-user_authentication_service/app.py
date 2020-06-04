@@ -11,7 +11,7 @@ app = Flask(__name__)
 
 
 @app_views.route('/', methods=['GET'])
-def french_welcome() -> str:
+def greeting() -> str:
     """ Welcome page """
     return jsonify({"message": "Bienvenue"})
 
@@ -48,13 +48,13 @@ def logout():
     try:
         user = AUTH.get_user_from_session_id(s_id)
         AUTH.destroy_session(user)
-        return redirect(url_for(french_welcome))
+        return redirect("/")
     except Exception:
         abort(403)
 
 
 @app_views.route('/profile', methods=['GET'], strict_slashes=False)
-def profile():
+def profile() -> str:
     """ Find profile in db """
     s_id = request.cookies.get('session_id')
     try:
@@ -65,7 +65,7 @@ def profile():
 
 
 @app_views.route('/reset_password', methods=['POST'], strict_slashes=False)
-def get_reset_password_token():
+def get_reset_password_token() -> str:
     """ Generate a reset password token """
     email = request.form.get('email')
     try:
@@ -76,7 +76,7 @@ def get_reset_password_token():
 
 
 @app_views.route('/reset_password', methods=["POST"], strict_slashes=False)
-def update_password():
+def update_password() -> str:
     """ Update password for user endpoint """
     email = request.form.get("email")
     reset_token = request.form.get("reset_token")
