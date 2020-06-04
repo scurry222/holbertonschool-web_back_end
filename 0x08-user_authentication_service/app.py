@@ -14,7 +14,7 @@ app = Flask(__name__)
 @app_views.route('/', methods=['GET'], strict_slashes=False)
 def french_welcome() -> str:
     """ Welcome page """
-    return jsonify({"message":"Bienvenue"}), 200
+    return jsonify({"message": "Bienvenue"}), 200
 
 
 @app_views.route('/users', methods=['POST'], strict_slashes=False)
@@ -46,11 +46,11 @@ def login():
 def logout():
     """ Empty session id and redirect """
     s_id = request.cookies.get("session_id")
-    user = DB.find_user_by(s_id)
-    if user:
+    try:
+        user = DB.find_user_by(session_id=s_id)
         AUTH.destroy_session(user)
         return redirect(url_for(french_welcome))
-    else:
+    except Exception:
         abort(403)
 
 
@@ -58,15 +58,37 @@ def logout():
 def profile():
     """ Find profile in db """
     s_id = request.cookies.get('session_id')
-    user = DB.find_user_by(s_id)
-    if user:
+    try:
+        user = DB.find_user_by(session_id=s_id)
         return jsonify({"email", user.email}), 200
-    else:
+    except Exception:
         abort(403)
 
 
 @app_views.route('/reset_password', methods=['POST'], strict_slashes=False)
-def get_reset_password_token()
+def get_reset_password_token():
+    """ Generate a reset password token """
+    email = request.form.get('email')
+    try:
+        user = DB.find_user_by(email=email)
+    except Exception:
+        abort(403)
+    reset_token = AUTH.get_reset_password_token(email)
+    return jsonify({"email": user.email, "reset_token": reset_token}), 200
+
+
+@app_views.route('/reset_password', methods=["POST"], strict_slashes=False)
+def update_password():
+    """ Update password for user endpoint """
+    email = request.form.get("email")
+    reset_token = request.form.get("reset_token")
+    new_password = request.form.get("new_password")
+    try:
+        AUTH.update_password(reset_token, new_password)
+        return jsonify({"email": email, "message": "Password Updated"}), 403
+    except Exception:
+        abort(403)
+
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port="5000")
