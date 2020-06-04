@@ -10,10 +10,10 @@ AUTH = Auth()
 app = Flask(__name__)
 
 
-@app_views.route('/', methods=['GET'], strict_slashes=False)
+@app_views.route('/', methods=['GET'])
 def french_welcome() -> str:
     """ Welcome page """
-    return jsonify({"message": "Bienvenue"}), 200
+    return jsonify({"message": "Bienvenue"})
 
 
 @app_views.route('/users', methods=['POST'], strict_slashes=False)
