@@ -4,7 +4,6 @@
 
 from auth import Auth
 from flask import Flask, jsonify, request, abort, redirect
-from db import DB
 
 
 AUTH = Auth()
@@ -47,7 +46,7 @@ def logout():
     """ Empty session id and redirect """
     s_id = request.cookies.get("session_id")
     try:
-        user = DB.find_user_by(session_id=s_id)
+        user = AUTH.get_user_from_session_id(s_id)
         AUTH.destroy_session(user)
         return redirect(url_for(french_welcome))
     except Exception:
@@ -59,7 +58,7 @@ def profile():
     """ Find profile in db """
     s_id = request.cookies.get('session_id')
     try:
-        user = DB.find_user_by(session_id=s_id)
+        user = AUTH.get_user_from_session_id(s_id)
         return jsonify({"email", user.email}), 200
     except Exception:
         abort(403)
@@ -70,11 +69,10 @@ def get_reset_password_token():
     """ Generate a reset password token """
     email = request.form.get('email')
     try:
-        user = DB.find_user_by(email=email)
+        reset_token = AUTH.get_reset_password_token(email)
+        return jsonify({"email": user.email, "reset_token": reset_token}), 200
     except Exception:
         abort(403)
-    reset_token = AUTH.get_reset_password_token(email)
-    return jsonify({"email": user.email, "reset_token": reset_token}), 200
 
 
 @app_views.route('/reset_password', methods=["POST"], strict_slashes=False)
