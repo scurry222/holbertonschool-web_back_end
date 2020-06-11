@@ -1,4 +1,6 @@
 #!/usr/bin/env python3
+""" Flask app module
+"""
 
 from flask import Flask, render_template
 from flask_babel import Babel
@@ -24,4 +26,4 @@ if __name__ == "__main__":
     PORT = int(os.environ.get("PORT", 5000))
     DEBUG = "NO_DEBUG" not in os.environ
 
-    app.run(debug=DEBUG, host="0.0.0.0", port=PORT)
+    app.run(debug=DEBUG, host="127.0.0.1", port=PORT)
