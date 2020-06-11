@@ -19,7 +19,7 @@ class Config:
 babel = Babel(app)
 
 
-@app.route("/")
+@app.route("/", methods=["GET"], strict_slashes=False)
 def home():
     """Home page"""
 
