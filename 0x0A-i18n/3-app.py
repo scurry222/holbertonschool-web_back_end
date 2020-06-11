@@ -1,20 +1,21 @@
 #!/usr/bin/env python3
 
-from flask import Flask, render_template, request
-from flask_babel import Babel
+from flask import Flask, render_template, request, flash
+from flask_babel import Babel, _
+import gettext
 import os
 
 app = Flask(__name__)
+babel = Babel(app)
+
+app.secret_key = os.environ.get("FLASK_SECRET_KEY", "ABCDEF")
 
 
 class Config:
     """ Configuration of available languages """
     LANGUAGES = ["en", "fr"]
-    BABEL_DEFAULT_LOCALE = "fr"
+    BABEL_DEFAULT_LOCALE = "en"
     BABEL_DEFAULT_TIMEZONE = "UTC"
-
-
-babel = Babel(app)
 
 
 @babel.localeselector
@@ -26,7 +27,8 @@ def get_locale():
 @app.route("/")
 def home():
     """Home page"""
-
+    flash(_('[home_title] Welcome to Holberton'))
+    flash(_('[home_header] Hello World!'))
     return render_template("3-index.html")
 
 

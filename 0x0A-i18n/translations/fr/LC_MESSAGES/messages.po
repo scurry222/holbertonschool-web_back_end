@@ -1,5 +1,4 @@
-msgid "[home_title] Beinevenue chez Holberton"
-      "[home_header] Bonjour monde!"
+msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
@@ -14,3 +13,10 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.8.0\n"
 
+#: *-app.py:28
+msgid "Welcome to Holberton"
+msgstr "Bienvenue chez Holberton"
+
+#: *-app.py:29
+msgid "Hello World!"
+msgstr "Bonjour monde!"
