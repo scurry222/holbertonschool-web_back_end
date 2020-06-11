@@ -21,15 +21,13 @@ class Config:
 
 
 @babel.localeselector
-def get_locale():
+def get_locale() -> str:
     """ Return best match from accepted languages """
-    if request.args.get("locale") in Config.LANGUAGES:
-        return request.args.get("locale")
     return request.accept_languages.best_match(Config.LANGUAGES)
 
 
 @app.route("/", methods=["GET"], strict_slashes=False)
-def home():
+def home() -> str:
     """ Home page """
     flash(_('[home_title] Welcome to Holberton'))
     flash(_('[home_header] Hello World!'))
@@ -41,8 +39,4 @@ def home():
 #     raise Exception("Error!")
 
 if __name__ == "__main__":
-
-    PORT = int(os.environ.get("PORT", 5000))
-    DEBUG = "NO_DEBUG" not in os.environ
-
-    app.run(debug=DEBUG, host="127.0.0.1", port=PORT)
+    app.run(host="127.0.0.1", port=5000)

@@ -11,7 +11,7 @@ babel = Babel(app)
 
 
 @app.route("/", methods=["GET"], strict_slashes=False)
-def home():
+def home() -> str:
     """Home page"""
 
     return render_template("0-index.html")
@@ -22,8 +22,4 @@ def home():
 #     raise Exception("Error!")
 
 if __name__ == "__main__":
-
-    PORT = int(os.environ.get("PORT", 5000))
-    DEBUG = "NO_DEBUG" not in os.environ
-
-    app.run(debug=DEBUG, host="127.0.0.1", port=PORT)
+    app.run(host="127.0.0.1", port=5000)
