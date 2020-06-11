@@ -23,5 +23,5 @@ msgid "Welcome to Holberton"
 msgstr ""
 
 #: *-app.py:29
-msgid "Hello World!"
+msgid "Hello world!"
 msgstr ""

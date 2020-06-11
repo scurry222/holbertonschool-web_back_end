@@ -20,6 +20,8 @@ class Config:
     BABEL_DEFAULT_LOCALE = "en"
     BABEL_DEFAULT_TIMEZONE = "UTC"
 
+app.config.from_object(Config)
+
 
 @babel.localeselector
 def get_locale() -> Optional[str]:
@@ -31,7 +33,7 @@ def get_locale() -> Optional[str]:
 def home() -> str:
     """ Home page """
     flash(_('[home_title] Welcome to Holberton'))
-    flash(_('[home_header] Hello World!'))
+    flash(_('[home_header] Hello world!'))
     return render_template("3-index.html")
 
 
