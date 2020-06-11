@@ -14,9 +14,9 @@ msgstr ""
 "Generated-By: Babel 2.8.0\n"
 
 #: *-app.py:28
-msgid "Welcome to Holberton"
+msgid "home_title"
 msgstr "Bienvenue chez Holberton"
 
 #: *-app.py:29
-msgid "Hello world!"
+msgid "home_header"
 msgstr "Bonjour monde!"

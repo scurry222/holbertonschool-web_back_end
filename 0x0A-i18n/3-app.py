@@ -26,14 +26,14 @@ app.config.from_object(Config)
 @babel.localeselector
 def get_locale() -> Optional[str]:
     """ Return best match from accepted languages """
-    return request.accept_languages.best_match(Config.LANGUAGES)
+    return request.accept_languages.best_match(app.config['LANGUAGES'])
 
 
 @app.route("/", methods=["GET"], strict_slashes=False)
 def home() -> str:
     """ Home page """
-    flash(_('[home_title] Welcome to Holberton'))
-    flash(_('[home_header] Hello world!'))
+    flash(_('home_title'))
+    flash(_('home_header'))
     return render_template("3-index.html")
 
 
