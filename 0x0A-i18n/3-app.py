@@ -4,6 +4,7 @@
 
 from flask import Flask, render_template, request, flash
 from flask_babel import Babel, _
+from typing import Optional
 import gettext
 import os
 
@@ -21,7 +22,7 @@ class Config:
 
 
 @babel.localeselector
-def get_locale() -> str:
+def get_locale() -> Optional[str]:
     """ Return best match from accepted languages """
     return request.accept_languages.best_match(Config.LANGUAGES)
 
