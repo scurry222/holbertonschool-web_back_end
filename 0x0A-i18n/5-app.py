@@ -59,10 +59,10 @@ def get_locale() -> Optional[str]:
 @app.route("/", methods=["GET"], strict_slashes=False)
 def home() -> str:
     """ Home page """
-    flash(_('home_title'))
-    flash(_('home_header'))
-    flash(_('logged_in_as'))
-    flash(_('not_logged_in'))
+    # flash(_('home_title'))
+    # flash(_('home_header'))
+    # flash(_('logged_in_as'))
+    # flash(_('not_logged_in'))
     return render_template("5-index.html")
 
 
