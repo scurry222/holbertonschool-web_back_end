@@ -61,10 +61,8 @@ def home() -> str:
     """ Home page """
     flash(_('home_title'))
     flash(_('home_header'))
-    if g.user is not None:
-        flash(_('logged_in_as'))
-    else:
-        flash(_('not_logged_in'))
+    flash(_('logged_in_as'))
+    flash(_('not_logged_in'))
     return render_template("5-index.html")
 
 
