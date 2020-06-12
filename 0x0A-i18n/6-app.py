@@ -46,7 +46,10 @@ def before_request() -> None:
     """ Set user before other functions run """
     if request.args.get("login_as"):
         user = get_user(request.args.get("login_as"))
-        g.user = user["name"]
+        if user:
+            g.user = user["name"]
+        else:
+            return None
     else:
         return None
 
@@ -59,8 +62,8 @@ def get_locale() -> Optional[str]:
 
     if request.args.get("login_as"):
         user = get_user(request.args.get("login_as"))
-        if user.get("locale") in app.config['LANGUAGES']:
-            user.get("locale")
+        if user and user["locale"] in app.config['LANGUAGES']:
+            user.get["locale"]
 
     if request.headers.get("locale"):
         return request.headers.get("locale")
