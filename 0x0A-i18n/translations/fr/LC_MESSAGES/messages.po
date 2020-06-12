@@ -20,3 +20,12 @@ msgstr "Bienvenue chez Holberton"
 #: *-app.py:29
 msgid "home_header"
 msgstr "Bonjour monde!"
+
+#: *-app.py:63
+#, python-format
+msgid "logged_in_as"
+msgstr "Vous êtes connecté en tant que %(username)s."
+
+#: *-app.py:65
+msgid "not_logged_in"
+msgstr "Vous n'êtes pas connecté."

@@ -29,7 +29,7 @@ def get_locale() -> Optional[str]:
 
 @app.route("/", methods=["GET"], strict_slashes=False)
 def home() -> str:
-    """Home page"""
+    """ Home page """
 
     return render_template("2-index.html")
 

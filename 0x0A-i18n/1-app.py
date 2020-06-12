@@ -22,7 +22,7 @@ babel = Babel(app)
 
 @app.route("/", methods=["GET"], strict_slashes=False)
 def home() -> str:
-    """Home page"""
+    """ Home page """
 
     return render_template("1-index.html")
 
