@@ -36,8 +36,7 @@ app.config.from_object(Config)
 def get_user(login_as: int) -> Union[dict, None]:
     """ Get dictionary based on user_id """
     try:
-        name = users[int(login_as)]["name"]
-        return name
+        return users.get(int(login_as))
     except Exception:
         return None
 
@@ -45,21 +44,34 @@ def get_user(login_as: int) -> Union[dict, None]:
 @app.before_request
 def before_request() -> None:
     """ Set user before other functions run """
-    g.user = get_user(request.args.get("login_as"))
+    if request.args.get("login_as"):
+        user = get_user(request.args.get("login_as"))
+        g.user = user["name"]
+    else:
+        return None
 
 
 @babel.localeselector
 def get_locale() -> Optional[str]:
     """ Return best match from accepted languages """
-    if request.args.get("locale") in app.config['LANGUAGES']:
+    if request.args.get("locale"):
         return request.args.get("locale")
+
+    if request.args.get("login_as"):
+        user = get_user(request.args.get("login_as"))
+        if user.get("locale") in app.config['LANGUAGES']:
+            user.get("locale")
+
+    if request.headers.get("locale"):
+        return request.headers.get("locale")
+
     return request.accept_languages.best_match(app.config['LANGUAGES'])
 
 
 @app.route("/", methods=["GET"], strict_slashes=False)
 def home() -> str:
     """ Home page """
-    return render_template("5-index.html")
+    return render_template("6-index.html")
 
 
 # @app.route("/error")
