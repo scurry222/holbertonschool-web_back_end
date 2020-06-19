@@ -3,5 +3,5 @@
 CREATE TRIGGER trigger_name BEFORE INSERT
 ON orders FOR EACH ROW
 UPDATE items
-SET quantity = quantity - number
-WHERE name = item_name
+SET quantity = quantity - NEW.number
+WHERE name = NEW.item_name;

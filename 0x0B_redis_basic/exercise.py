@@ -43,7 +43,7 @@ def replay(method: Callable) -> None:
     output_list_key = method.__qualname__ + ':outputs'
     this = method.__self__
 
-    counter = this.get(counter_key).decode('utf-8')
+    counter = this.get_str(counter_key)
     history = list(zip(this.get_list(input_list_key),
                        this.get_list(output_list_key)))
     print("{} was called {} times:".format(counter_key, counter))
