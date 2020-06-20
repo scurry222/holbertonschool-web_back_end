@@ -9,4 +9,4 @@ SELECT name
 FROM students
 WHERE score < 80 AND
 last_meeting IS NULL OR
-CURDATE() > DATE_ADD(last_meeting, INTERVAL 1 MONTH)
+DATE(NOW()) > DATE_ADD(last_meeting, INTERVAL 1 MONTH);
