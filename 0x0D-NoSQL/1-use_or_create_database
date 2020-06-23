@@ -1,2 +1,2 @@
 // Command that uses or creates a database
-use my_db
+use my_db;
