@@ -1,12 +1,12 @@
 #!/usr/bin/env python3
-"""
+""" 12. Log stats
 """
 
 from pymongo import MongoClient
 
 
 def log_stats():
-    """"""
+    """ Provide stats about nginx logs stored in MongoDB """
     m_client = MongoClient('mongodb://127.0.0.1:27017')
     nginx_collection = m_client.log.nginx
     print("{} logs".format(nginx_collection.count_documents({})))
