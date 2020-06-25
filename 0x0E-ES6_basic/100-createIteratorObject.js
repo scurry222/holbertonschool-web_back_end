@@ -1,4 +1,4 @@
-function createIteratorObject (report) {
+export function createIteratorObject (report) {
     const total = Object.values(report.allEmployees).reduce((a, b) => {
         a.push(...b)
         return a
