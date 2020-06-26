@@ -1,6 +1,9 @@
 export default function iterateThroughObject(reportWithIterator) {
-  const object = '';
-  for (let next = reportWithIterator.next(); !next.done;
-    next = reportWithIterator.next()) object.append(`${next.value} | `);
-  return object;
+  let object = '';
+  let curr = reportWithIterator[Symbol.iterator]().next();
+  while (!curr.done) {
+    object += `${curr.data} | `;
+    curr = reportWithIterator[Symbol.iterator]().next();
+  }
+  return object.slice(0, object.length - 3);
 }
