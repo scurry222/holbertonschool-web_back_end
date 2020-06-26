@@ -5,20 +5,16 @@ export function createIteratorObject (report) {
   }, [])
   let curr = 0
   return {
-    next () {
-      if (curr < total.length) {
-        const res = {
-          data: total[curr],
-          done: true
-        }
-        curr += 1
-        return res
-      } else {
-        return {
-          data: null,
-          done: false
+    [Symbol.iterator]: () => ({
+      next () {
+        if (curr < total.length) {
+          const res = { data: total[curr], done: false }
+          curr += 1
+          return res
+        } else {
+          return { data: null, done: true }
         }
       }
-    }
+    })
   }
 }
