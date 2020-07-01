@@ -4,14 +4,14 @@ export default async function asyncUploadUser() {
   try {
     const resFromUploadPhoto = await uploadPhoto();
     const resFromCreateUser = await createUser();
-    return {
+    return Promise.resolve({
       photo: resFromUploadPhoto,
       user: resFromCreateUser,
-    };
+    });
   } catch (err) {
-    return {
+    return Promise.resolve({
       photo: null,
       user: null,
-    };
+    });
   }
 }
