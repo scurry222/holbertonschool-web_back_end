@@ -10,6 +10,9 @@ export default function handleProfileSignup() {
             firstName,
             lastName,
           );
+        })
+        .catch(() => {
+          console.log('Signup system offline');
         });
     })
     .catch(() => {
