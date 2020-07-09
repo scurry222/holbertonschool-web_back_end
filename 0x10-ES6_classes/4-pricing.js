@@ -7,7 +7,7 @@ export default class Pricing {
   }
 
   set amount(amount) {
-    this.amount = amount;
+    this._amount = amount;
   }
 
   get amount() {
@@ -15,7 +15,7 @@ export default class Pricing {
   }
 
   set currency(currency) {
-    this.currency = currency;
+    this._currency = currency;
   }
 
   get currency() {
@@ -23,7 +23,7 @@ export default class Pricing {
   }
 
   displayFullPrice() {
-    return `${this.amount} ${this.currency.displayFullCurrency()}`;
+    return `${this._amount} ${this.currency.displayFullCurrency()}`;
   }
 
   static convertPrice(amount, conversionRate) {

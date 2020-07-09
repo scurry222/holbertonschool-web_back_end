@@ -15,10 +15,10 @@ export default class HolbertonClass {
 
   [Symbol.toPrimitive](hint) {
     if (hint === 'string') {
-      return this.location;
+      return this._location;
     }
     if (hint === 'number') {
-      return this.size;
+      return this._size;
     }
     return null;
   }
