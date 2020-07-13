@@ -2,8 +2,8 @@ const fs = require('fs');
 
 module.exports = function countStudents(path) {
   try {
-    let data = fs.readFileSync(path, { encoding: 'utf-8' });
-    let totalData = data.split('\n').slice(1);
+    const data = fs.readFileSync(path, { encoding: 'utf-8' });
+    const totalData = data.split('\n').slice(1);
 
     console.log(`Number of students: ${totalData.length}`);
 
@@ -13,7 +13,7 @@ module.exports = function countStudents(path) {
     let sweCount = 0;
     let sweStudents = '';
 
-    data.forEach((line) => {
+    totalData.forEach((line) => {
       let students = line;
       students = students.split(',');
       if (students[3] === 'CS') {
