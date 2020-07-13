@@ -3,7 +3,7 @@ const fs = require('fs');
 module.exports = function countStudents(path) {
   try {
     let data = fs.readFileSync(path, { encoding: 'utf-8' });
-    data = data.split('\n').slice(1);
+    let totalData = data.split('\n').slice(1);
 
     console.log(`Number of students: ${totalData.length}`);
 
