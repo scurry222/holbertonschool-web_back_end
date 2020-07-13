@@ -7,7 +7,7 @@ module.exports = function countStudents(path) {
         if (err) reject(Error('Cannot load the database'));
         const totalData = data.split('\n').slice(1);
 
-        console.log(`Number of students: ${data.length}`);
+        console.log(`Number of students: ${totalData.length}`);
 
         let csCount = 0;
         let csStudents = '';
