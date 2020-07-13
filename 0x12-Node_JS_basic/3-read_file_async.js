@@ -27,12 +27,10 @@ module.exports = function countStudents(path) {
         });
 
         console.log(
-          `Number of students in CS:\
-                     ${csCount}. List: ${csStudents}`,
+          `Number of students in CS: ${csCount}. List: ${csStudents}`,
         );
         console.log(
-          `Number of students in SWE:\
-                     ${sweCount}. List: ${sweStudents}`,
+          `Number of students in SWE: ${sweCount}. List: ${sweStudents}`,
         );
         resolve();
       } catch (err) { reject(Error('Cannot load the database')); }
