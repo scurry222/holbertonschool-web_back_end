@@ -17,6 +17,9 @@ describe('calculateNumber', () => {
     it('correctly adds 3.5 and 1.5', () => {
         assert.equal(calculateNumber(3.5, 1.5), 6)
     })
+    it('correctly adds 3 and 1.5', () => {
+        assert.equal(calculateNumber(3, 1.5), 5)
+    })
     it('correctly adds 3.9999999 and 1', () => {
         assert.equal(calculateNumber(3.9999999, 1), 5)
     })

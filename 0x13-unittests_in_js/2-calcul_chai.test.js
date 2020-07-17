@@ -18,6 +18,9 @@ describe('calculateNumber', () => {
     it('correctly adds 3.5 and 1.5', () => {
         expect(calculateNumber('SUM', 3.5, 1.5)).to.equal(6);
     })
+    it('correctly adds 3 and 1.5', () => {
+        expect(calculateNumber('SUM', 3, 1.5)).to.equal(5);
+    })
     it('correctly adds 3.9999999 and 1', () => {
         expect(calculateNumber('SUM', 3.9999999, 1)).to.equal(5);
     })
@@ -42,6 +45,9 @@ describe('calculateNumber', () => {
     it('correctly subtracts 3.5 and 1.5', () => {
         expect(calculateNumber('SUBTRACT', 3.5, 1.5)).to.equal(2);
     })
+    it('correctly subtracts 3 and 1.5', () => {
+        expect(calculateNumber('SUBTRACT', 3, 1.5)).to.equal(1);
+    })
     it('correctly subtracts 3.9999999 and 1', () => {
         expect(calculateNumber('SUBTRACT', 3.9999999, 1)).to.equal(3);
     })
@@ -65,6 +71,9 @@ describe('calculateNumber', () => {
     })
     it('correctly divides 3.5 and 1.5', () => {
         expect(calculateNumber('DIVIDE', 3.5, 1.5)).to.equal(2);
+    })
+    it('correctly adds 4 and 1.5', () => {
+        expect(calculateNumber('DIVIDE', 4, 1.5)).to.equal(2);
     })
     it('correctly divides 3.9999999 and 1', () => {
         expect(calculateNumber('DIVIDE', 3.9999999, 1)).to.equal(4);
