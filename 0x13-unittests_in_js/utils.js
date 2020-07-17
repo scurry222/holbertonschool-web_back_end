@@ -1,14 +1,14 @@
 class Utils {
     static calculateNumber(type, a, b) {
-        const aActual = Math.round(a);
-        const bActual = Math.round(b);
+        const aRounded = Math.round(a);
+        const bRounded = Math.round(b);
     
-        if (type === 'SUM') return aActual + bActual;
+        if (type === 'SUM') return aRounded + bRounded;
     
-        else if (type === 'SUBTRACT') return aActual - bActual;
+        else if (type === 'SUBTRACT') return aRounded - bRounded;
     
         else if (type === 'DIVIDE')
-            return bActual === 0 ? 'ERROR' : aActual / bActual;
+            return bRounded === 0 ? 'ERROR' : aRounded / bRounded;
     }
 }
 
