@@ -26,14 +26,10 @@ module.exports = function countStudents(path) {
           }
         });
 
-        console.log(
-          `Number of students in CS: ${csCount}. List: ${csStudents}`,
-        );
-        console.log(
-          `Number of students in SWE: ${sweCount}. List: ${sweStudents}`,
-        );
-        resolve();
-      } catch (err) { reject(Error('Cannot load the database')); }
+        console.log(`Number of students in CS: ${csCount}. List: ${csStudents}`);
+        console.log(`Number of students in SWE: ${sweCount}. List: ${sweStudents}`);
+        return resolve();
+      } catch (err) { return reject(Error('Cannot load the database')); }
     });
   });
 };

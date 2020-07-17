@@ -25,14 +25,14 @@ function countStudents(path) {
           }
         });
 
-        resolve({
+        return resolve({
           total: totalData.length,
           csCount,
           csStudents,
           sweCount,
           sweStudents,
         });
-      } catch (err) { reject(Error('Cannot load the database')); }
+      } catch (err) { return reject(Error('Cannot load the database')); }
     });
   });
 }
