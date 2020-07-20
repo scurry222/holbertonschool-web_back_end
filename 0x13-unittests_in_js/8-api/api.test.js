@@ -23,5 +23,13 @@ describe('API', () => {
         expect(res.text).to.equal('Welcome to the payment system');
       })
     });
+    it('should return status code 404 on wrong endpoint', () => {
+      chai.request('http://localhost:7865')
+      .get('/hmm')
+      .end((err, res) => {
+        if (err) throw err;
+        expect(res.statusCode).to.equal(404);
+      })
+    });
   })
 })
