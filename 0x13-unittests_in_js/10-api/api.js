@@ -22,7 +22,7 @@ app.get('/available_payments', (req, res) => {
 
 app.post('/login', (req, res) => {
   if (!req.body.userName) res.status(404).send('Please provide a username')
-  res.status(200).send(`Welcome ${req.body.userName}`)
+  else res.status(200).send(`Welcome ${req.body.userName}`)
 })
 
 app.listen(7865, () => {

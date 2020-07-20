@@ -7,5 +7,5 @@ module.exports = function calculateNumber(type, a, b) {
     else if (type === 'SUBTRACT') return aActual - bActual;
 
     else if (type === 'DIVIDE')
-        return bActual === 0 ? 'ERROR' : aActual / bActual;
+        return bActual === 0 ? 'Error' : aActual / bActual;
 }
