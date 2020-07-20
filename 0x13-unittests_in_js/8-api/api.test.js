@@ -7,19 +7,21 @@ chai.use(chaiHttp);
 describe('API', () => {
   describe('GET /', () => {
     it('should return status code 200', () => {
-      return chai.request('http://localhost:7865')
-      .get('/', function(err, res) {
+      chai.request('http://localhost:7865')
+      .get('/')
+      .end((err, res) => {
         if (err) throw err;
-        expect(res).to.equal(200);
+        expect(res.statusCode).to.equal(200);
       })
     });
 
     it('should return the correct message', () => {
-      return chai.request('http://localhost:7865')
-        .get('/', function(err, res, body) {
-          if (err) throw err;
-          expect(body).to.equal('Welcome to the payment system');
-        })
+      chai.request('http://localhost:7865')
+      .get('/')
+      .end((err, res) => {
+        if (err) throw err;
+        expect(res.text).to.equal('Welcome to the payment system');
+      })
     });
   })
 })
