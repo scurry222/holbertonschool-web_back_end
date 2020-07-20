@@ -36,10 +36,11 @@ describe('API', () => {
   describe('GET /cart/:id', () => {
     it('should return the correct status code and message', () => {
       chai.request('http://localhost:7865')
-      .get('/cart/12', (err, res, body) => {
+      .get('/cart/12')
+      .end((err, res) => {
         if (err) throw err;
         expect(res.statusCode).to.equal(200);
-        expect(body.text).to.equal(`Payment methods for cart 12`);
+        expect(res.text).to.equal(`Payment methods for cart 12`);
       });
     });
     it('should return 404 for a non-number id', () => {
@@ -96,12 +97,11 @@ describe('API', () => {
       .send({
         'body': {},
         'json': true
-      }), ((err, res, body) => {
+      }), (err, res, body) => {
           if (err) throw err;
           expect(res.statusCode).to.equal(404);
           expect(body).to.equal('Please provide a username');
-        }
-      );
+      };
     });
   });
 });
